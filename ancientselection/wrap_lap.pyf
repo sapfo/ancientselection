@@ -1,0 +1,23 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module wrap_lap ! in 
+    interface  ! in :wrap_lap
+        subroutine spteqr(compz,n,d,e,z,ldz,work,info) ! in :wrap_lap:spteqr.f
+            character :: compz
+            integer :: n
+            real dimension(*) :: d
+            real dimension(*) :: e
+            real dimension(ldz,*) :: z
+            integer, optional,check(shape(z,0)==ldz),depend(z) :: ldz=shape(z,0)
+            real dimension(*) :: work
+            integer :: info
+            real :: ops
+            real :: itcnt
+            common /latime/ ops,itcnt
+        end subroutine spteqr
+    end interface 
+end python module wrap_lap
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
